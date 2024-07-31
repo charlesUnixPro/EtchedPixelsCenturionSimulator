@@ -1046,7 +1046,7 @@ static int dec(unsigned reg, unsigned val)
 {
 	uint8_t r = reg_read(reg) - val;
 	reg_write(reg, r);
-	alu_out &= ~(ALU_L | ALU_V | ALU_M | ALU_F);
+	alu_out &= ~(ALU_V | ALU_M | ALU_F);
 	if (r == 0)
 		alu_out |= ALU_V;
 	if (r & 0x80)
@@ -1244,7 +1244,7 @@ static uint16_t inc16(uint16_t a, uint16_t imm)
 static uint16_t dec16(uint16_t a, uint16_t imm)
 {
 	uint16_t r = a - imm;
-	alu_out &= ~(ALU_L | ALU_V | ALU_M | ALU_F);
+	alu_out &= ~(ALU_V | ALU_M | ALU_F);
 	if ((r & 0xFFFF) == 0)
 		alu_out |= ALU_V;
 	if (r & 0x8000)
